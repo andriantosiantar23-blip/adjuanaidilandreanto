@@ -1,256 +1,295 @@
+<!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lilium Medica Center</title>
+
+<title>Lilium Medica Library</title>
 
 <style>
+
 body{
-    margin:0;
-    font-family:'Segoe UI', sans-serif;
-    color:white;
-    scroll-behavior:smooth;
+font-family:Arial;
+margin:0;
+
+background-image: linear-gradient(
+rgba(255,255,255,0.85),
+rgba(255,255,255,0.85)
+),
+url("https://images.unsplash.com/photo-1586773860418-d37222d8fce3");
+
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
 }
 
-/* NAVIGATION */
-nav{
-    position:absolute;
-    top:0;
-    right:0;
-    padding:20px 40px;
-    z-index:2;
+header{
+background:#0b5394;
+color:white;
+text-align:center;
+padding:20px;
 }
 
-nav a{
-    text-decoration:none;
-    color:white;
-    margin-left:20px;
-    font-weight:bold;
-    padding:8px 18px;
-    border-radius:20px;
-    border:2px solid #ffd700;
-    transition:0.3s;
+nav ul{
+list-style:none;
+padding:0;
 }
 
-nav a:hover{
-    background:#ffd700;
-    color:black;
+nav ul li{
+display:inline;
+margin:15px;
 }
 
-/* HERO */
+nav ul li a{
+color:white;
+text-decoration:none;
+font-weight:bold;
+}
+
+section{
+padding:40px;
+}
+
 .hero{
-    min-height:100vh;
-    background:url('https://images.unsplash.com/photo-1586773860418-d37222d8fce3') no-repeat center center/cover;
-    position:relative;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding:80px 20px;
+background:#e3f2fd;
+text-align:center;
+padding:60px;
 }
 
-.hero::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:rgba(0,0,0,0.65);
-}
-
-.hero-content{
-    position:relative;
-    z-index:1;
-    max-width:1000px;
-}
-
-.hero h2{
-    letter-spacing:3px;
-    color:#ffd700;
-}
-
-.hero h1{
-    font-size:50px;
-    color:#ff4d6d;
-    margin:10px 0;
-}
-
-.hero p{
-    font-style:italic;
-}
-
-.btn-main{
-    margin-top:25px;
-    display:inline-block;
-    padding:15px 40px;
-    background:#e60039;
-    border-radius:40px;
-    text-decoration:none;
-    color:white;
-    font-weight:bold;
-    font-size:18px;
-    border:3px solid #ffd700;
-    transition:0.3s;
-}
-
-.btn-main:hover{
-    background:#ffd700;
-    color:black;
-}
-
-/* FOTO SECTION */
-.hero-image{
-    margin-top:40px;
-}
-
-.hero-image img{
-    width:100%;
-    max-width:850px;
-    border-radius:20px;
-    box-shadow:0 15px 40px rgba(0,0,0,0.6);
-}
-
-/* VISI MISI */
-.visi-misi{
-    padding:80px 20px;
-    background:#111;
-    text-align:center;
-}
-
-.visi-misi h2{
-    color:#ffd700;
+.card-container{
+display:flex;
+gap:20px;
+flex-wrap:wrap;
 }
 
 .card{
-    max-width:800px;
-    margin:20px auto;
-    padding:30px;
-    background:rgba(255,255,255,0.05);
-    border-radius:20px;
+background:white;
+padding:20px;
+border-radius:10px;
+box-shadow:0 2px 6px rgba(0,0,0,0.1);
+width:220px;
 }
 
-.card h3{
-    color:#ff4d6d;
+button{
+padding:10px 20px;
+background:#0b5394;
+color:white;
+border:none;
+cursor:pointer;
 }
 
-.card ul{
-    list-style:none;
-    padding:0;
+textarea{
+width:300px;
+height:80px;
+display:block;
+margin-top:10px;
 }
 
-.card ul li{
-    padding:8px 0;
+.ulasan{
+background:white;
+padding:15px;
+margin-top:10px;
+border-radius:8px;
 }
 
-/* LOGIN POPUP */
-.login-box{
-    display:none;
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,0.7);
-    justify-content:center;
-    align-items:center;
+.reply{
+margin-left:20px;
+color:green;
 }
 
-.login-content{
-    background:white;
-    color:black;
-    padding:30px;
-    border-radius:20px;
-    width:300px;
+footer{
+background:#222;
+color:white;
+text-align:center;
+padding:20px;
 }
 
-.login-content input{
-    width:100%;
-    padding:8px;
-    margin:8px 0;
-}
-
-.login-content button{
-    width:100%;
-    padding:10px;
-    background:#e60039;
-    color:white;
-    border:none;
-    border-radius:10px;
-    cursor:pointer;
-}
-
-@media(max-width:768px){
-    .hero h1{
-        font-size:35px;
-    }
-}
 </style>
-
-<script>
-function openLogin(){
-    document.getElementById("loginBox").style.display="flex";
-}
-function closeLogin(){
-    document.getElementById("loginBox").style.display="none";
-}
-</script>
 
 </head>
 
 <body>
 
-<!-- NAVIGATION -->
+<header>
+
+<h1>Lilium Medica Library</h1>
+<p>Hospital Medical Library & Information Center</p>
+
 <nav>
-    <a href="javascript:void(0)" onclick="openLogin()">Login</a>
-    <a href="https://wa.me/6282172919084" target="_blank">Hubungi Saya</a>
+<ul>
+
+<li><a href="#home">Home</a></li>
+<li><a href="#koleksi">Koleksi</a></li>
+<li><a href="#layanan">Layanan</a></li>
+<li><a href="#login">Login</a></li>
+<li><a href="#ulasan">Ulasan</a></li>
+<li><a href="#kontak">Hubungi Kami</a></li>
+
+</ul>
 </nav>
 
-<!-- HERO -->
-<section class="hero">
-    <div class="hero-content">
-        <h2>Selamat Datang di</h2>
-        <h1>Lilium Medica Center</h1>
-        <p>"Knowledge for Healing, Science for Life"</p>
+</header>
 
-        <a href="#visi" class="btn-main">
-            Jelajahi Informasi Medis
-        </a>
+<section id="home" class="hero">
 
-        <!-- FOTO YANG KAMU KIRIM -->
-        <div class="hero-image">
-            <img src="/mnt/data/7979.jpg" alt="Perpustakaan Lilium Medica Center">
-        </div>
+<h2>Selamat Datang di Lilium Medica Library</h2>
 
-    </div>
+<p>Pusat informasi kesehatan untuk dokter, perawat, peneliti, dan mahasiswa.</p>
+
 </section>
 
-<!-- VISI MISI -->
-<section class="visi-misi" id="visi">
-    <h2>Visi & Misi</h2>
+<section id="koleksi">
 
-    <div class="card">
-        <h3>Visi</h3>
-        <p>
-        Menjadi pusat informasi kesehatan terpercaya yang mendukung pelayanan medis berbasis bukti dan inovasi ilmiah.
-        </p>
-    </div>
+<h2>Koleksi Perpustakaan</h2>
 
-    <div class="card">
-        <h3>Misi</h3>
-        <ul>
-            <li>Menyediakan literatur medis terkini.</li>
-            <li>Mendukung penelitian tenaga kesehatan.</li>
-            <li>Menyediakan layanan penelusuran klinis.</li>
-            <li>Mengembangkan repository digital medis.</li>
-            <li>Meningkatkan mutu layanan rumah sakit.</li>
-        </ul>
-    </div>
-</section>
+<div class="card-container">
 
-<!-- LOGIN POPUP -->
-<div class="login-box" id="loginBox" onclick="closeLogin()">
-    <div class="login-content" onclick="event.stopPropagation()">
-        <h3>Login Anggota</h3>
-        <input type="text" placeholder="Username">
-        <input type="password" placeholder="Password">
-        <button>Login</button>
-    </div>
+<div class="card">
+<h3>Buku Kedokteran</h3>
+<p>Koleksi buku medis dari berbagai spesialisasi.</p>
 </div>
+
+<div class="card">
+<h3>Jurnal Medis</h3>
+<p>Akses jurnal nasional dan internasional.</p>
+</div>
+
+<div class="card">
+<h3>E-Book</h3>
+<p>Koleksi buku digital kesehatan.</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="layanan">
+
+<h2>Layanan Perpustakaan</h2>
+
+<ul>
+
+<li>Peminjaman Buku</li>
+<li>Literature Search</li>
+<li>Pelatihan Literasi Informasi</li>
+<li>Bantuan Sitasi</li>
+
+</ul>
+
+</section>
+
+<section id="login">
+
+<h2>Login Pustakawan</h2>
+
+<input type="text" id="username" placeholder="Username">
+<br><br>
+
+<input type="password" id="password" placeholder="Password">
+<br><br>
+
+<button onclick="login()">Login</button>
+
+<p id="status"></p>
+
+</section>
+
+<section id="ulasan">
+
+<h2>Ulasan Pengguna</h2>
+
+<input type="text" id="nama" placeholder="Nama">
+<br><br>
+
+<textarea id="komentar" placeholder="Tulis ulasan"></textarea>
+
+<br>
+
+<button onclick="kirimUlasan()">Kirim Ulasan</button>
+
+<div id="daftarUlasan"></div>
+
+</section>
+
+<section id="kontak">
+
+<h2>Hubungi Kami</h2>
+
+<p>WhatsApp / Telepon : <b>082172919084</b></p>
+
+<p>Email : liliummedicalibrary@gmail.com</p>
+
+</section>
+
+<footer>
+
+<p>© 2026 Lilium Medica Library</p>
+
+</footer>
+
+<script>
+
+let adminLogin=false;
+
+function login(){
+
+let user=document.getElementById("username").value;
+let pass=document.getElementById("password").value;
+
+if(user=="admin" && pass=="library"){
+
+adminLogin=true;
+
+document.getElementById("status").innerHTML="Login berhasil sebagai pustakawan";
+
+}else{
+
+document.getElementById("status").innerHTML="Login gagal";
+
+}
+
+}
+
+function kirimUlasan(){
+
+let nama=document.getElementById("nama").value;
+let komentar=document.getElementById("komentar").value;
+
+let div=document.createElement("div");
+
+div.className="ulasan";
+
+div.innerHTML="<b>"+nama+"</b><p>"+komentar+"</p>";
+
+if(adminLogin){
+
+let tombol=document.createElement("button");
+
+tombol.innerText="Balas";
+
+tombol.onclick=function(){
+
+let balasan=prompt("Tulis balasan pustakawan");
+
+let p=document.createElement("p");
+
+p.className="reply";
+
+p.innerHTML="<b>Pustakawan:</b> "+balasan;
+
+div.appendChild(p);
+
+}
+
+div.appendChild(tombol);
+
+}
+
+document.getElementById("daftarUlasan").appendChild(div);
+
+}
+
+</script>
 
 </body>
 </html>
