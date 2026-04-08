@@ -8,20 +8,114 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
 <style>
+
+/* Background */
 body{
-  background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)),
+  background: linear-gradient(rgba(255,255,255,0.92), rgba(255,255,255,0.92)),
   url('https://images.unsplash.com/photo-1586773860418-d37222d8fce3');
   background-size: cover;
   background-attachment: fixed;
+  scroll-behavior: smooth;
 }
-.reply{ color: green; margin-left: 15px; }
+
+/* Navbar */
+.navbar{
+  transition:0.3s;
+}
+.navbar.scrolled{
+  background-color:#0d6efd !important;
+  box-shadow:0 2px 10px rgba(0,0,0,0.2);
+}
+
+/* Hero */
+#home{
+  background: linear-gradient(135deg,#0d6efd,#6ea8fe);
+  color:white;
+  border-bottom-left-radius:50px;
+  border-bottom-right-radius:50px;
+}
+
+/* Card */
+.card{
+  border:none;
+  border-radius:15px;
+  transition:0.3s;
+}
+.card:hover{
+  transform: translateY(-8px);
+  box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* Title */
+h2{
+  font-weight:bold;
+  position:relative;
+}
+h2::after{
+  content:"";
+  width:60px;
+  height:4px;
+  background:#0d6efd;
+  display:block;
+  margin:10px auto;
+  border-radius:2px;
+}
+
+/* List layanan */
+.list-group-item{
+  border:none;
+  margin-bottom:10px;
+  border-radius:10px;
+  transition:0.3s;
+}
+.list-group-item:hover{
+  background:#0d6efd;
+  color:white;
+  transform:scale(1.02);
+}
+
+/* Button */
+.btn{
+  border-radius:25px;
+  transition:0.3s;
+}
+.btn:hover{
+  transform:scale(1.05);
+}
+
+/* Input */
+input, textarea{
+  border-radius:10px !important;
+}
+
+/* Ulasan */
+#daftarUlasan .card{
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.reply{
+  color:green;
+  margin-left:15px;
+}
+
+/* Animasi */
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(10px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+/* Footer */
+footer{
+  margin-top:30px;
+}
+
 </style>
 </head>
 
 <body>
 
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
   <div class="container">
     <a class="navbar-brand" href="#">Lilium Medica</a>
     <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
@@ -42,8 +136,10 @@ body{
   </div>
 </nav>
 
+<br><br><br>
+
 <!-- Hero -->
-<section id="home" class="text-center py-5 bg-light">
+<section id="home" class="text-center py-5">
   <div class="container">
     <h2>Selamat Datang di Lilium Medica Library</h2>
     <p>Pusat informasi kesehatan untuk tenaga medis dan mahasiswa</p>
@@ -207,6 +303,7 @@ body{
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
+
 let adminLogin=false;
 
 function login(){
@@ -231,7 +328,7 @@ div.innerHTML="<b>"+nama+"</b><p>"+komentar+"</p>";
 
 if(adminLogin){
 let btn=document.createElement("button");
-btn.className="btn btn-sm btn-primary";
+btn.className="btn btn-sm btn-primary mt-2";
 btn.innerText="Balas";
 
 btn.onclick=function(){
@@ -247,6 +344,33 @@ div.appendChild(btn);
 
 document.getElementById("daftarUlasan").appendChild(div);
 }
+
+// Navbar scroll effect
+window.addEventListener("scroll", function(){
+  let nav=document.querySelector(".navbar");
+  nav.classList.toggle("scrolled", window.scrollY > 50);
+});
+
+// Animasi scroll
+const sections = document.querySelectorAll("section");
+
+sections.forEach(sec=>{
+  sec.style.opacity = 0;
+  sec.style.transform = "translateY(40px)";
+  sec.style.transition = "0.6s";
+});
+
+window.addEventListener("scroll", ()=>{
+  sections.forEach(sec=>{
+    let top = window.scrollY;
+    let offset = sec.offsetTop - 300;
+    if(top > offset){
+      sec.style.opacity = 1;
+      sec.style.transform = "translateY(0)";
+    }
+  });
+});
+
 </script>
 
 </body>
